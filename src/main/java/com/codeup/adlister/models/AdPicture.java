@@ -3,60 +3,25 @@ package com.codeup.adlister.models;
 public class AdPicture {
     private long id;
     private String url;
-    private String altText;
+    private String alt_text;
     private long adID;
     private String createTime;
 
 
-    public AdPicture(){}
+    public AdPicture() {}
 
-    public AdPicture(String url, String altText, long adID) {
+    public AdPicture(String url, String alt_text, long adID) {
         this.url = url;
-        this.altText = altText;
+        this.alt_text = alt_text;
         this.adID = adID;
     }
 
-    //    public AdPicture( String url, String alt_text, long adID) {
-//        this.url = url;
-//        this.alt_text = alt_text;
-//        this.adID = adID;
-//    }
-
-    public AdPicture(long id, String url, String altText, long adID) {
+    public AdPicture(long id, String url, String alt_text, long adID) {
         this.id = id;
         this.url = url;
-        this.altText = altText;
+        this.alt_text = alt_text;
         this.adID = adID;
-    }
 
-
-//    public AdPicture(long id, String url, String alt_text, long adID) {
-//        this.id = id;
-//        this.url = url;
-//        this.alt_text = alt_text;
-//        this.adID = adID;
-//
-//    }
-
-    public AdPicture(long adID, String url, String altText) {
-        this.adID = adID;
-        this.url = url;
-        this.altText = altText;
-    }
-
-    public AdPicture(long adID, String url, String altText, String createTime) {
-        this.adID = adID;
-        this.url = url;
-        this.altText = altText;
-        this.createTime = createTime;
-    }
-
-    public AdPicture(long id, long adID, String url, String altText, String createTime) {
-        this.id = id;
-        this.adID = adID;
-        this.url = url;
-        this.altText = altText;
-        this.createTime = createTime;
     }
 
     public long getId() {
@@ -67,28 +32,28 @@ public class AdPicture {
         this.id = id;
     }
 
-    public String getAdImgUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public void setAdImgUrl(String adImgUrl) {
-        this.url = adImgUrl;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public String getAltText() {
-        return altText;
+    public String getAlt_text() {
+        return alt_text;
     }
 
-    public void setAltText(String altText) {
-        this.altText = altText;
+    public void setAlt_text(String alt_text) {
+        this.alt_text = alt_text;
     }
 
-    public long getAdId() {
+    public long getAdID() {
         return adID;
     }
 
-    public void setAdId(long adId) {
-        this.adID = adId;
+    public void setAdID(long adID) {
+        this.adID = adID;
     }
 
     public String getCreateTime() {
@@ -97,9 +62,5 @@ public class AdPicture {
 
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
-    }
-
-    public String getAltText(){
-        return this.alt_text;
     }
 }

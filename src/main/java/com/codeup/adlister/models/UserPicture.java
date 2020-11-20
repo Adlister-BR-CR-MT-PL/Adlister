@@ -9,6 +9,7 @@ public class UserPicture {
     private String altText;
     private long userID;
     private String alt_text;
+    private String createTime;
 
     public UserPicture(){}
 
@@ -63,6 +64,7 @@ public class UserPicture {
 
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
+    }
 
     public long getImgID(){
         return this.id;

@@ -2,37 +2,20 @@ package com.codeup.adlister.models;
 
 public class AdPicture {
     private long id;
-    private String adImgUrl;
-    private String altText;
-    private long adId;
-    private String createTime;
+    private long adID;
+    private String url;
 
     public AdPicture(){}
 
-    public AdPicture(String adImgUrl, String altText) {
-        this.adImgUrl = adImgUrl;
-        this.altText = altText;
+    public AdPicture(long adID, String url) {
+        this.adID = adID;
+        this.url = url;
     }
 
-    public AdPicture(String adImgUrl, String altText, long adId) {
-        this.adImgUrl = adImgUrl;
-        this.altText = altText;
-        this.adId = adId;
-    }
-
-    public AdPicture(String adImgUrl, String altText, long adId, String createTime) {
-        this.adImgUrl = adImgUrl;
-        this.altText = altText;
-        this.adId = adId;
-        this.createTime = createTime;
-    }
-
-    public AdPicture(long id, String adImgUrl, String altText, long adId, String createTime) {
+    public AdPicture(long id, long userID, String url) {
         this.id = id;
-        this.adImgUrl = adImgUrl;
-        this.altText = altText;
-        this.adId = adId;
-        this.createTime = createTime;
+        this.adID = userID;
+        this.url = url;
     }
 
 
@@ -61,11 +44,11 @@ public class AdPicture {
     }
 
     public long getAdId() {
-        return adId;
+        return adID;
     }
 
     public void setAdId(long adId) {
-        this.adId = adId;
+        this.adID = adId;
     }
 
     public String getCreateTime() {

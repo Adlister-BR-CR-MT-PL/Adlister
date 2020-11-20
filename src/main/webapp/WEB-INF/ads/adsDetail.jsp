@@ -18,12 +18,26 @@
 
 <div class="container">
     <h1>Ad Overview</h1>
+    <img height="150px" src="${adPic}" alt="advertising picture">
+    <h1><c:out value="${ad.title}"/></h1>
+    <h2><c:out value="${ad.description}"/></h2>
+    <h3>Ad ID: <c:out value="${ad.id}"/></h3>
+    <h4> Created By: <c:out value="${user}"/></h4>
 
-    <h1><c:out value="${sessionScope.ad.title}"/></h1>
-    <h2><c:out value="${sessionScope.ad.description}"/></h2>
-    <h3>Ad ID: <c:out value="${sessionScope.ad.id}"/></h3>
-    <h4> Created By: <c:out value="${sessionScope.users.username}"/></h4>
-
+    <c:if test="${sessionScope.user.id == sessionScope.ad.userId}">
+        <form action="/ads/detail" method="post">
+            <div class="form-group">
+                <input type="url" placeholder="img URL Here" name="adsPicture">
+                <input name="userID" id="userID" type="hidden" value="${sessionScope.ad.id}">
+                <input type="submit" class="btn" value="Update Ad Picture">
+            </div>
+        </form>
+        <c:if test="${sessionScope.PictureError != error}">
+            <div class="alert alert-warning" role="alert">
+                Couldn't upload file, try again.
+            </div>
+        </c:if>
+    </c:if>
 </div>
 <jsp:include page="../partials/footer.jsp" />
 </body>

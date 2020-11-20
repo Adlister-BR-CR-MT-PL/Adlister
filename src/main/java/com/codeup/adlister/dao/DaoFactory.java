@@ -4,7 +4,6 @@ import com.codeup.adlister.models.BusinessAdPicture;
 
 public class DaoFactory {
     private static AdCategories adCategoriesDao;
-    private static AdPictures adPicturesDao;
     private static Ads adsDao;
     private static BusinessAdCategories businessAdCategoriesDao;
     private static BusinessAdPictures businessAdPicturesDao;
@@ -15,8 +14,7 @@ public class DaoFactory {
     private static Categories categoriesDao;
     private static UserPictures getUserPicDao;
     private static Users usersDao;
-
-
+    private static AdPictures getGetAdsPicDao;
 
     private static Config config = new Config();
 
@@ -33,15 +31,6 @@ public class DaoFactory {
         }
         return usersDao;
     }
-
-
-    public static AdPictures getAdPicturesDao() {
-        if (adPicturesDao == null) {
-            adPicturesDao = new MySQLAdPicturesDao(config);
-        }
-        return adPicturesDao;
-    }
-
 
     public static Businesses getBusinessesDao() {
         if (businessesDao == null) {
@@ -109,4 +98,10 @@ public class DaoFactory {
         return businessAdPicturesDao;
     }
 
+    public static AdPictures getGetAdsPicDao() {
+        if (getGetAdsPicDao == null) {
+            getGetAdsPicDao = new MySQLadPicDao(config);
+        }
+        return getGetAdsPicDao;
+    }
 }

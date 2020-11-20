@@ -27,31 +27,44 @@ public class ViewProfileServlet extends HttpServlet {
 
         request.setAttribute("ads", DaoFactory.getAdsDao().all());
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
+        request.getRequestDispatcher("/ads/detail.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // ADD/UPDATE USER PROFILE PICTURE
         User currentUser = (User) request.getSession().getAttribute("user");
         String imgURL = request.getParameter("userPicture");
-        Boolean noImgURL = imgURL.isEmpty();
 
-        UserPicture userPic = new UserPicture(imgURL, currentUser.getId());
-        UserPicture userPicDao = DaoFactory.getGetUserPicDao().findByPicUserID(currentUser.getId());
+            //creating new userPic instance with the user_id column equal to current user user_id
+            UserPicture userPic = new UserPicture(imgURL, currentUser.getId());
+            UserPicture userPicDao = DaoFactory.getGetUserPicDao().findByPicUserID(currentUser.getId());
 
+            if (imgURL.isEmpty()) {
+                // makes sure userPic doesn't change, and gives an error
+                request.getSession().setAttribute("PictureError", "error");
+                request.getSession().setAttribute("userPic", userPic);
+                response.sendRedirect("/profile");
+                return;
+            }
 
-        if (noImgURL) {
-            request.getSession().setAttribute("PictureError", "error");
-            return;
-        }
+            if (userPicDao.getImgURL() == null) {
+                // if there is no userPic for this user, insert one into the database
+                DaoFactory.getGetUserPicDao().insertPic(userPic);
+            } else {
+                //if there is a picture, update and replace current picture
+                DaoFactory.getGetUserPicDao().updatePicURL(imgURL, currentUser.getId());
+            }
+        request.getSession().setAttribute("userPic", userPic);
+        request.getSession().setAttribute("PictureError", null);
+        response.sendRedirect("/profile");
 
-        if (userPicDao.getImgURL() == null) {
-            DaoFactory.getGetUserPicDao().insertPic(userPic);
-            request.getSession().setAttribute("userPic", userPic);
-            response.sendRedirect("/profile");
-        } else {
-            DaoFactory.getGetUserPicDao().updatePicURL(imgURL, currentUser.getId());
-            request.getSession().setAttribute("userPic", userPic);
-            response.sendRedirect("/profile");
-        }
+//        request.getSession().setAttribute("ad", );
+        //UPDATE PROFILE INFORMATION
+//        //Michael made the update jsp and functionality, so this is not needed
+//        if(request.getParameter("pageName").equals("editProfile")){
+//            response.sendRedirect("/editProfile");
+//        }
+
     }
 }
 

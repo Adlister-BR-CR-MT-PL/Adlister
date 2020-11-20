@@ -73,7 +73,7 @@ public class MySQLusrPicDao implements UserPictures {
             stmt.setString(1, searchID);
             return extractPic(stmt.executeQuery());
         } catch (SQLException e) {
-            throw new RuntimeException("Error finding a picture by User ID", e);
+            throw new RuntimeException("Error updating a picture by User ID", e);
         }
     }
 

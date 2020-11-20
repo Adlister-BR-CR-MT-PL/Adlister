@@ -31,6 +31,7 @@
         <div class="card-body">
             <form action="/profile" method="post">
                 <div class="form-group">
+                    <input type="hidden" name="pageName" value="showProfile">
                     <input type="url" id="userPicture" placeholder="img URL Here" name="userPicture">
                     <input name="userID" id="userID" type="hidden" value="${user.id}">
                     <input type="submit" class="btn" value="Update Profile Picture">
@@ -41,15 +42,31 @@
                     Couldn't upload file, try again.
                 </div>
             </c:if>
+            <form action="/profile" method="post">
+                <input type="hidden" name="pageName" value="editProfile">
+                <input type="submit" value="Edit Profile">
+            </form>
         </div>
     </div>
 
+    <hr>
     <h1>Here are your ads!</h1>
 
     <c:forEach var="ad" items="${ads}">
-    <div class="col-md-6">
-        <h2>${ad.title}</h2>
-        <p>${ad.description}</p>
+    <div class="card">
+        <div class="card-body">
+            <div class="card-title">
+                <h2><c:out value="${ad.title}" /></h2>
+            </div>
+            <div class="card-text">
+                <p><c:out value="${ad.description}"/></p>
+            </div>
+            <form action="/ads" method="POST">
+                <input name="ad-ID" id="ad-ID" type="hidden" value="${ad.id}">
+                <input name="userID" type="hidden" value="${ad.userId}">
+                <input type="submit" class="btn btn-primary" value="see details...">
+            </form>
+        </div>
     </div>
     </c:forEach>
     </p>

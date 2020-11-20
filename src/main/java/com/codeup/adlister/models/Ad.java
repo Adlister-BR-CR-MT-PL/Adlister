@@ -7,12 +7,14 @@ public class Ad {
     private String description;
     private String createTime;
 
+
     public Ad(long id, long userId, String title, String description) {
         this.id = id;
         this.userId = userId;
         this.title = title;
         this.description = description;
     }
+
 
     public Ad(long id, long userId, String title, String description, String createTime) {
         this.id = id;
@@ -27,6 +29,7 @@ public class Ad {
         this.title = title;
         this.description = description;
     }
+
 
     public long getId() {
         return id;

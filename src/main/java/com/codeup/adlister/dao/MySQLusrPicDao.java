@@ -8,6 +8,7 @@ import java.sql.*;
 public class MySQLusrPicDao implements UserPictures {
     private Connection connection;
 
+
     public MySQLusrPicDao(Config config) {
         try {
             DriverManager.registerDriver(new Driver());
@@ -34,18 +35,22 @@ public class MySQLusrPicDao implements UserPictures {
         }
     }
 
-    //add user id to picture object
-    //grab session id and ad it into insert pic
-
-
     @Override
     public Long insertPic(UserPicture userPic) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
         String query = "INSERT INTO user_pictures(user_img_url, alt_text, user_id) VALUES (?,?,?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, userPic.getImgURL());
             stmt.setString(2, "profile picture");
+<<<<<<< HEAD
             stmt.setLong(3, userPic.getUserID());
+=======
+            stmt.setLong(3,userPic.getUserID());
+>>>>>>> main
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
@@ -63,8 +68,12 @@ public class MySQLusrPicDao implements UserPictures {
                 rs.getLong("id"),
                 rs.getString("user_img_url"),
                 rs.getString("alt_text"),
+<<<<<<< HEAD
                 rs.getLong("user_id"),
                 rs.getString("create_time")
+=======
+                rs.getLong("user_id")
+>>>>>>> main
         );
     }
 
@@ -77,7 +86,7 @@ public class MySQLusrPicDao implements UserPictures {
             stmt.setString(1, searchID);
             return extractPic(stmt.executeQuery());
         } catch (SQLException e) {
-            throw new RuntimeException("Error updating a picture by User ID", e);
+            throw new RuntimeException("Error finding a picture by User ID", e);
         }
     }
 

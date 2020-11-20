@@ -75,7 +75,8 @@ public class MySQLUsersDao implements Users {
 //                stmt.executeUpdate();
 //            }
 //    }
-
+//TODO
+    //add method to add about_me section and/ lister_type
 
     private User extractUser(ResultSet rs) throws SQLException {
         if (! rs.next()) {

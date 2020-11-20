@@ -1,12 +1,14 @@
 package com.codeup.adlister.models;
 
 
+import java.util.Date;
+
 public class UserPicture {
     private long id;
     private String imgURL;
     private String altText;
     private long userID;
-    private String createTime;
+    private String alt_text;
 
     public UserPicture(){}
 
@@ -18,19 +20,6 @@ public class UserPicture {
     public UserPicture(long id, String imgURL){
         this.id = id;
         this.imgURL = imgURL;
-    }
-
-    public UserPicture(String imgURL, String altText, long userID) {
-        this.imgURL = imgURL;
-        this.altText = altText;
-        this.userID = userID;
-    }
-
-    public UserPicture(String imgURL, String altText, long userID, String createTime) {
-        this.imgURL = imgURL;
-        this.altText = altText;
-        this.userID = userID;
-        this.createTime = createTime;
     }
 
     public UserPicture(long id, String imgURL, String altText, long userID) {
@@ -74,7 +63,6 @@ public class UserPicture {
 
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
-    }
 
     public long getImgID(){
         return this.id;

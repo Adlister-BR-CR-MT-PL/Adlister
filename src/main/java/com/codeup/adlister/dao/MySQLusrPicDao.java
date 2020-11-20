@@ -56,13 +56,14 @@ public class MySQLusrPicDao implements UserPictures {
         if (!rs.next()) {
             return null;
         }
+
         return new UserPicture(
                 rs.getLong("id"),
                 rs.getString("user_img_url"),
                 rs.getString("alt_text"),
                 rs.getLong("user_id"),
-                rs.getString("create_time")
-    }
+                rs.getString("create_time"));
+    };
 
     @Override
     public UserPicture findPicByUserID(long userID) {

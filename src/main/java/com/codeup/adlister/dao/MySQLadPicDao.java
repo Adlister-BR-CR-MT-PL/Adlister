@@ -22,53 +22,54 @@ public class MySQLadPicDao implements AdPictures{
         }
     }
 
+
     @Override
     public AdPicture findByURL(String URL) {
         String query = "SELECT * FROM ad_pictures WHERE ad_img_url = ?";
-        try{
+        try {
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, URL);
             return extractPic(stmt.executeQuery());
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException("Error finding a picture by URL");
         }
     }
 
     @Override
-    public AdPicture findByAdID(long adID) {
-        String query = "SELECT * FROM ad_pictures WHERE ad_id = ? LIMIT 1";
+    public AdPicture findByAdIDinAds(long adID) {
+        String query = "SELECT * FROM ad_pictures WHERE ad_id = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
             String searchID = String.valueOf(adID);
             stmt.setString(1, searchID);
             return extractPic(stmt.executeQuery());
         } catch (SQLException e) {
-            throw new RuntimeException("Error finding a picture by adID", e);
+            throw new RuntimeException("Error finding a picture by Ad ID");
         }
     }
 
+
     @Override
-    public AdPicture findByPicID(long picID) {
-        String query = "SELECT * FROM ad_pictures WHERE id = ? LIMIT 1";
+    public AdPicture findByAdPicID(long picID) {
+        String query = "SELECT * FROM ad_pictures WHERE id = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
             String searchID = String.valueOf(picID);
             stmt.setString(1, searchID);
             return extractPic(stmt.executeQuery());
         } catch (SQLException e) {
-            throw new RuntimeException("Error finding a picture by ID", e);
+            throw new RuntimeException("Error finding a picture by its own ID");
         }
     }
 
     @Override
     public Long insertPic(AdPicture adPic) {
-        String query = "INSERT INTO ad_pictures(id, ad_id,ad_img_url) VALUES (?,?,?)";
+        String query = "INSERT INTO ad_pictures(ad_img_url, alt_text,ad_id) VALUES (?,?,?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            String idString = String.valueOf(adPic.getId());
-            stmt.setString(1,idString );
-            stmt.setLong(2, adPic.getAdId());
-            stmt.setString(3, adPic.getAdImgUrl());
+            stmt.setString(1, adPic.getUrl());
+            stmt.setString(2, "standard ad pic");
+            stmt.setLong(3, adPic.getAdID());
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
@@ -78,7 +79,6 @@ public class MySQLadPicDao implements AdPictures{
         }
     }
 
-    @Override
     public void updatePicURL(String newPicURL, long adID) {
         String query = "UPDATE ad_pictures  SET  ad_img_url = ? WHERE ad_id = ?";
         try {
@@ -87,30 +87,20 @@ public class MySQLadPicDao implements AdPictures{
             stmt.setLong(2, adID);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException("Error finding a picture by Ad ID", e);
+            throw new RuntimeException("Error updating a picture by User ID", e);
+
         }
     }
 
-//    private AdPicture extractPic(ResultSet rs) throws SQLException {
-//        if(!rs.next()){
-//            return null;
-//        }
-//        return new AdPicture(
-//                rs.getLong("id"),
-//                rs.getString("ad_img_url")
-//        );
-//    }
-
     private AdPicture extractPic(ResultSet rs) throws SQLException {
-        if (! rs.next()) {
+        if (!rs.next()) {
             return null;
         }
         return new AdPicture(
                 rs.getLong("id"),
-                rs.getLong("ad_id"),
                 rs.getString("ad_img_url"),
                 rs.getString("alt_text"),
-                rs.getString("create_time")
+                rs.getLong("ad_id")
         );
     }
 

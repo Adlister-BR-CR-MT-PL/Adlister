@@ -9,8 +9,7 @@ public class UserPicture {
     private long userID;
     private String createTime;
 
-    public UserPicture() {
-    }
+    public UserPicture() {}
 
     public UserPicture(String imgURL, long userID) {
         this.imgURL = imgURL;

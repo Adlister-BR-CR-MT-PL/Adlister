@@ -10,6 +10,16 @@ public class AdPicture {
 
     public AdPicture() {}
 
+    public AdPicture(String url, long adID) {
+        this.url = url;
+        this.adID = adID;
+    }
+
+    public AdPicture(long id, String url) {
+        this.id = id;
+        this.url = url;
+    }
+
     public AdPicture(String url, String alt_text, long adID) {
         this.url = url;
         this.alt_text = alt_text;

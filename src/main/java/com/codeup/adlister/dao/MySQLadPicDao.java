@@ -36,7 +36,7 @@ public class MySQLadPicDao implements AdPictures{
     }
 
     @Override
-    public AdPicture findByAdIDinAds(long adID) {
+    public AdPicture findAdPicByAdIDInAds(long adID){
         String query = "SELECT * FROM ad_pictures WHERE ad_id = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);

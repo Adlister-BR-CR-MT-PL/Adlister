@@ -41,18 +41,18 @@ public class MySQLAdPicturesDao implements AdPictures {
         }
     }
 
-    @Override
-    public AdPicture findByAdIDinAds(long adID) {
-        String query = "SELECT * FROM ad_pictures WHERE ad_id = ?";
-        try {
-            PreparedStatement stmt = connection.prepareStatement(query);
-            String searchID = String.valueOf(adID);
-            stmt.setString(1, searchID);
-            return extractPic(stmt.executeQuery());
-        } catch (SQLException e) {
-            throw new RuntimeException("Error finding a picture by Ad ID");
-        }
-    }
+//    @Override
+//    public AdPicture findByAdIDinAds(long adID) {
+//        String query = "SELECT * FROM ad_pictures WHERE ad_id = ?";
+//        try {
+//            PreparedStatement stmt = connection.prepareStatement(query);
+//            String searchID = String.valueOf(adID);
+//            stmt.setString(1, searchID);
+//            return extractPic(stmt.executeQuery());
+//        } catch (SQLException e) {
+//            throw new RuntimeException("Error finding a picture by Ad ID");
+//        }
+//    }
 
 
     @Override
@@ -65,6 +65,19 @@ public class MySQLAdPicturesDao implements AdPictures {
             return extractPic(stmt.executeQuery());
         } catch (SQLException e) {
             throw new RuntimeException("Error finding a picture by its own ID");
+        }
+    }
+
+    @Override
+    public AdPicture findAdPicByAdIDInAds(long adID){
+        String query = "SELECT * FROM ad_pictures WHERE ad_id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            String searchID = String.valueOf(adID);
+            stmt.setString(1, searchID);
+            return extractPic(stmt.executeQuery());
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding a picture by Ad ID");
         }
     }
 

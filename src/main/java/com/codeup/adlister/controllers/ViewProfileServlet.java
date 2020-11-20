@@ -51,14 +51,6 @@ public class ViewProfileServlet extends HttpServlet {
             return;
         }
 
-//            if (userPicDao.getImgURL() == null) {
-//                // if there is no userPic for this user, insert one into the database
-//                DaoFactory.getGetUserPicDao().insertPic(userPic);
-//            } else {
-//                //if there is a picture, update and replace current picture
-//                DaoFactory.getGetUserPicDao().updatePicURL(imgURL, currentUser.getId());
-//            }
-
         if (userPicDao == null) {
             // if there is no userPic for this user, insert one into the database
             DaoFactory.getGetUserPicDao().insertPic(userPic);

@@ -3,30 +3,40 @@ package com.codeup.adlister.models;
 public class AdPicture {
     private long id;
     private String url;
-<<<<<<< HEAD
     private String altText;
-    private String createTime;
-=======
-    private String alt_text;
     private long adID;
+    private String createTime;
 
->>>>>>> main
 
     public AdPicture(){}
 
-    public AdPicture( String url, String alt_text, long adID) {
+    public AdPicture(String url, String altText, long adID) {
         this.url = url;
-        this.alt_text = alt_text;
+        this.altText = altText;
         this.adID = adID;
     }
 
-    public AdPicture(long id, String url, String alt_text, long adID) {
+    //    public AdPicture( String url, String alt_text, long adID) {
+//        this.url = url;
+//        this.alt_text = alt_text;
+//        this.adID = adID;
+//    }
+
+    public AdPicture(long id, String url, String altText, long adID) {
         this.id = id;
         this.url = url;
-        this.alt_text = alt_text;
+        this.altText = altText;
         this.adID = adID;
-
     }
+
+
+//    public AdPicture(long id, String url, String alt_text, long adID) {
+//        this.id = id;
+//        this.url = url;
+//        this.alt_text = alt_text;
+//        this.adID = adID;
+//
+//    }
 
     public AdPicture(long adID, String url, String altText) {
         this.adID = adID;

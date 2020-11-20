@@ -91,15 +91,16 @@ public class MySQLAdPicturesDao implements AdPictures{
     }
 
     @Override
-<<<<<<< HEAD
     public Long insertPic(AdPicture adPicture) {
         String query = "INSERT INTO ad_pictures(ad_img_url, ad_id) VALUES (?,?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, adPicture.getAdImgUrl());
             stmt.setLong(2, adPicture.getAdId());
-=======
-    public AdPicture findByAdPicID(long adID) {
+
+
+
+            public AdPicture findByAdPicID(long adID) {
         String query = "SELECT * FROM ad_pictures WHERE id = ?";
         try{
             PreparedStatement stmt = connection.prepareStatement(query);
@@ -120,7 +121,6 @@ public class MySQLAdPicturesDao implements AdPictures{
             stmt.setString(1, adPic.getUrl());
             stmt.setString(2, adPic.getAltText());
             stmt.setLong(3, adPic.getAdId());
->>>>>>> main
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
@@ -152,11 +152,8 @@ if(!rs.next()){
                 rs.getLong("ad_id"),
                 rs.getString("ad_img_url"),
                 rs.getString("alt_text"),
-<<<<<<< HEAD
                 rs.getString("create_time")
-=======
                 rs.getLong("ad_id")
->>>>>>> main
         );
     }
 

@@ -35,6 +35,19 @@ public class MySQLBusinessAdsDao implements BusinessAds {
         }
     }
 
+    @Override
+    public List<BusinessAd> allBizAdsByBizId(long businessId){
+        String query = "SELECT * FROM business_ads WHERE business_id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, businessId);
+            ResultSet rs = stmt.executeQuery();
+            return createBusinessAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all business ads from businessId.", e);
+        }
+    }
+
 //    @Override
 //    public List<Ad> search() {
 //        PreparedStatement stmt = null;

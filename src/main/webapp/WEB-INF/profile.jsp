@@ -71,5 +71,6 @@
     </c:forEach>
     </p>
     <jsp:include page="partials/footer.jsp" />
+</div>
 </body>
 </html>

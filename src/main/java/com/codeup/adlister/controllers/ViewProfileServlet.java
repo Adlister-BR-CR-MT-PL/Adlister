@@ -23,7 +23,10 @@ public class ViewProfileServlet extends HttpServlet {
         //get current User
         User currentUser = (User) request.getSession().getAttribute("user");
         // sending to JSP
-        request.setAttribute("userPic", DaoFactory.getGetUserPicDao().findByPicUserID(currentUser.getId()).getImgURL());
+
+        if ((DaoFactory.getGetUserPicDao().findPicByUserID(currentUser.getId())) != null) {
+            request.setAttribute("userPic", DaoFactory.getGetUserPicDao().findPicByUserID(currentUser.getId()).getImgURL());
+        }
 
         request.setAttribute("ads", DaoFactory.getAdsDao().all());
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
@@ -37,7 +40,7 @@ public class ViewProfileServlet extends HttpServlet {
 
             //creating new userPic instance with the user_id column equal to current user user_id
             UserPicture userPic = new UserPicture(imgURL, currentUser.getId());
-            UserPicture userPicDao = DaoFactory.getGetUserPicDao().findByPicUserID(currentUser.getId());
+            UserPicture userPicDao = DaoFactory.getGetUserPicDao().findPicByUserID(currentUser.getId());
 
             if (imgURL.isEmpty()) {
                 // makes sure userPic doesn't change, and gives an error
@@ -54,6 +57,7 @@ public class ViewProfileServlet extends HttpServlet {
                 //if there is a picture, update and replace current picture
                 DaoFactory.getGetUserPicDao().updatePicURL(imgURL, currentUser.getId());
             }
+
         request.getSession().setAttribute("userPic", userPic);
         request.getSession().setAttribute("PictureError", null);
         response.sendRedirect("/profile");

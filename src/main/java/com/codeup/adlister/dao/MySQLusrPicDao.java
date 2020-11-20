@@ -40,11 +40,12 @@ public class MySQLusrPicDao implements UserPictures {
 
     @Override
     public Long insertPic(UserPicture userPic) {
-        String query = "INSERT INTO user_pictures(user_img_url, user_id) VALUES (?,?)";
+        String query = "INSERT INTO user_pictures(user_img_url, alt_text, user_id) VALUES (?,?,?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, userPic.getImgURL());
-            stmt.setLong(2, userPic.getUserID());
+            stmt.setString(2, "profile picture");
+            stmt.setLong(3, userPic.getUserID());
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
@@ -60,12 +61,15 @@ public class MySQLusrPicDao implements UserPictures {
         }
         return new UserPicture(
                 rs.getLong("id"),
-                rs.getString("imgURL")
+                rs.getString("user_img_url"),
+                rs.getString("alt_text"),
+                rs.getLong("user_id"),
+                rs.getString("create_time")
         );
     }
 
     @Override
-    public UserPicture findByPicUserID(long userID) {
+    public UserPicture findPicByUserID(long userID) {
         String query = "SELECT * FROM user_pictures WHERE user_id = ? LIMIT 1";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);

@@ -27,22 +27,24 @@ public class User {
         this.isAdmin = false;
     }
 
+    //Search/SELECT
     public User(long id, boolean listerType, String username, String email, String password, String firstName, String lastName) {
         this.id = id;
         this.listerType = listerType;
         this.username = username;
         this.email = email;
-        setPassword(password);
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
+    //SEARCH/SELECT
     public User(long id, boolean listerType, String username, String email, String password, String firstName, String lastName, String aboutMe, String phoneNumber, boolean viewPreference, boolean isAdmin, String createTime) {
         this.id = id;
         this.listerType = listerType;
         this.username = username;
         this.email = email;
-        setPassword(password);
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.aboutMe = aboutMe;

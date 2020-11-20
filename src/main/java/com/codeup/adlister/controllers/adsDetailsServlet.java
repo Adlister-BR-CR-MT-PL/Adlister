@@ -17,16 +17,13 @@ import java.io.IOException;
 @WebServlet(name = "adsDetailsServlet.java", urlPatterns = "/ads/detail")
 public class adsDetailsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        checks for logged in user
-        if (request.getSession().getAttribute("user") == null) {
-            response.sendRedirect("/login");
-            return;
-        }
+        request.getSession().getAttribute("user");
+
         User currentUser = (User) request.getSession().getAttribute("user");
         Ad currentAd = (Ad) request.getSession().getAttribute("ad");
         request.setAttribute("user", currentUser.getUsername());
         request.setAttribute("ad", currentAd);
-//        request.setAttribute("adPic", DaoFactory.getGetAdsPicDao().findByadIDAds(currentAd.getId()).getUrl());
+//        request.setAttribute("adPic", DaoFactory.getGetAdsPicDao().findByAdIDinAds(currentAd.getId()).getAdImgUrl());
 
         request.getRequestDispatcher("/WEB-INF/ads/adsDetail.jsp")
                 .forward(request, response);

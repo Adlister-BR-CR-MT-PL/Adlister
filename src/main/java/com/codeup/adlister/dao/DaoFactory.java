@@ -98,12 +98,12 @@ public class DaoFactory {
 //        return businessAdPicturesDao;
 //    }
 //
-//    public static AdPictures getGetAdsPicDao() {
-//        if (getGetAdsPicDao == null) {
-//            getGetAdsPicDao = new MySQLAdPicturesDao(config);
-//        }
-//        return getGetAdsPicDao;
-//    }
+    public static AdPictures getGetAdsPicDao() {
+        if (getGetAdsPicDao == null) {
+            getGetAdsPicDao = new MySQLAdPicturesDao(config);
+        }
+        return getGetAdsPicDao;
+    }
 //
 //    public static Businesses getBusinessesDao() {
 //        if (businessesDao == null) {

@@ -27,19 +27,6 @@ public class MySQLAdPicturesDao implements AdPictures{
         }
     }
 
-
-
-    @Override
-    public AdPicture findByPicID(long picID) {
-        String query = "SELECT * FROM ad_pictures WHERE id = ? LIMIT 1";
-        try {
-            PreparedStatement stmt = connection.prepareStatement(query);
-            String searchID = String.valueOf(picID);
-            stmt.setString(1, searchID);
-            return extractPic(stmt.executeQuery());
-        } catch (SQLException e) {
-            throw new RuntimeException("Error finding a picture by ID", e);
-
     @Override
     public AdPicture findByURL(String URL) {
         String query = "SELECT * FROM ad_pictures WHERE ad_img_url = ?";
@@ -84,7 +71,7 @@ public class MySQLAdPicturesDao implements AdPictures{
         String query = "INSERT INTO ad_pictures(ad_img_url, alt_text,ad_id) VALUES (?,?,?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            stmt.setString(1, adPic.getUrl());
+            stmt.setString(1, adPic.getAdImgUrl());
             stmt.setString(2, adPic.getAltText());
             stmt.setLong(3, adPic.getAdId());
             stmt.executeUpdate();

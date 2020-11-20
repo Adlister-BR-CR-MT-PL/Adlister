@@ -32,7 +32,7 @@ public class User {
         this.listerType = listerType;
         this.username = username;
         this.email = email;
-        setPassword(password);
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
     }

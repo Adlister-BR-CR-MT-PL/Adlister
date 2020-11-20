@@ -5,6 +5,7 @@ public class AdPicture {
     private String url;
     private String alt_text;
     private long adID;
+    private String createTime;
 
 
     public AdPicture(){}
@@ -33,19 +34,19 @@ public class AdPicture {
     }
 
     public String getAdImgUrl() {
-        return adImgUrl;
+        return url;
     }
 
     public void setAdImgUrl(String adImgUrl) {
-        this.adImgUrl = adImgUrl;
+        this.url = adImgUrl;
     }
 
     public String getAltText() {
-        return altText;
+        return alt_text;
     }
 
     public void setAltText(String altText) {
-        this.altText = altText;
+        this.alt_text = altText;
     }
 
     public long getAdId() {
@@ -64,7 +65,4 @@ public class AdPicture {
         this.createTime = createTime;
     }
 
-    public String getAltText(){
-        return this.alt_text;
-    }
 }

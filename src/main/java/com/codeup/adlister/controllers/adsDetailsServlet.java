@@ -60,6 +60,8 @@ public class adsDetailsServlet extends HttpServlet {
                     //if there is a picture, update and replace current picture
                     DaoFactory.getGetAdsPicDao().updatePicURL(imgURL, currentAd.getId());
                 }
+
+
             request.getSession().setAttribute("adPic", thisAdPic);
             request.getSession().setAttribute("PictureError", null);
             response.sendRedirect("/ads/detail");

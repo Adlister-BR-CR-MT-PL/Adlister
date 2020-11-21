@@ -118,4 +118,20 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
+
+    @Override
+    public Long deleteAd(long adId){
+        String query = "DELETE FROM ads WHERE id = ? LIMIT 1";
+        try{
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, adId);
+            stmt.executeUpdate();
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next();
+            return rs.getLong(1);
+        } catch(SQLException e) {
+            throw new RuntimeException("Error deleting this ad.", e);
+        }
+    }
+
 }

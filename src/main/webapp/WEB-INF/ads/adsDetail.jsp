@@ -19,8 +19,8 @@
 <div class="container">
     <h1>Ad Overview</h1>
     <img height="150px" src="${adPic}" alt="advertising picture">
-    <h1><c:out value="${ad.title}"/></h1>
-    <h2><c:out value="${ad.description}"/></h2>
+    <h1>TITLE: <c:out value="${ad.title}"/></h1>
+    <h2>DESCRIPTION: <c:out value="${ad.description}"/></h2>
     <h3>Ad ID: <c:out value="${ad.id}"/></h3>
     <h4> Created By: <c:out value="${user}"/></h4>
 
@@ -32,6 +32,10 @@
                 <input type="submit" class="btn" value="Update Ad Picture">
             </div>
         </form>
+<%--        Deleting an Ad--%>
+        <button type="button" name="deleteAd" id="deleteAd" value="${sessionScope.ad.id}" class="btn btn-danger">DELETE</button>
+        <input type="submit" class="btn btn-danger" value="Delete Ad">
+
         <c:if test="${sessionScope.PictureError != error}">
             <div class="alert alert-warning" role="alert">
                 Couldn't upload file, try again.
@@ -39,6 +43,7 @@
         </c:if>
     </c:if>
 </div>
+<hr>
 <jsp:include page="../partials/footer.jsp" />
 </body>
 </html>

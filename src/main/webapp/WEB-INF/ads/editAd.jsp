@@ -18,16 +18,18 @@
 <div class="container">
     <h1>Edit Ad Information</h1>
     <c:if test="${sessionScope.user.id == sessionScope.ad.userId}">
-        <form action="/update-ad" method="POST">
+        <form action="../update-ad" method="POST">
             <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" id="title" name="title" class="form-control" value="${ad.title}">
+                <input type="text" id="title" name="title" class="form-control" value="${sessionScope.ad.title}">
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea name="description" id="description" cols="30" rows="10">${ad.description}</textarea>
+                <textarea name="description" id="description" cols="30" rows="10">${sessionScope.ad.description}</textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Update Ad</button>
+            <input name="update-AdID" id="updateAdID" type="hidden" value="${ad.id}">
+            <input name="update-UserID" id="update-UserID" type="hidden" value="${ad.userId}">
+            <input type="submit" id="update-AD" class="btn btn-warning" value="Submit Update">
         </form>
     </c:if>
 </div>

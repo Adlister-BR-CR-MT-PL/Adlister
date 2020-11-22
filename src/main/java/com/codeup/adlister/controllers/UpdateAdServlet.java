@@ -12,32 +12,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "DeleteAdServlet", urlPatterns = "/delete-ad")
-public class DeleteAdServlet extends HttpServlet {
+@WebServlet(name = "UpdateAdServlet", urlPatterns = "/update-ad")
+public class UpdateAdServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (request.getSession().getAttribute("user") == null){
+            response.sendRedirect("/login");
+            return;
+        }
 
-//    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        if (request.getSession().getAttribute("user") == null){
-//            response.sendRedirect("/login");
-//            return;
-//        }
-//
-//        long adId = Long.parseLong(request.getParameter("adId"));
-//        DaoFactory.getAdsDao().deleteAd(adId);
-//        response.sendRedirect("/ads");
-//    }
+        request.getRequestDispatcher("/WEB-INF/ads/editAd.jsp").forward(request, response);
+    }
 
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getSession().getAttribute("user") == null){
             response.sendRedirect("/login");
             return;
         }
 
-        String adId = request.getParameter("delete-AdID");
+        String adId = request.getParameter("update-AdID");
         Long adIdLong = Long.valueOf(adId);
+        String adTitle = request.getParameter("title");
+        String adDescription = request.getParameter("description");
         //long adId = Long.parseLong(request.getParameter("delete-AdID"));
         Ad currentAd = DaoFactory.getAdsDao().findByAdID(adIdLong);
-        AdPicture currentAdPicture = DaoFactory.getGetAdsPicDao().findAdPicByAdIDInAds(currentAd.getId());
+        //AdPicture currentAdPicture = DaoFactory.getGetAdsPicDao().findAdPicByAdIDInAds(currentAd.getId());
         User currentUser = (User) request.getSession().getAttribute("user");
 
 
@@ -48,16 +46,9 @@ public class DeleteAdServlet extends HttpServlet {
             return;
         }
 
-        if (currentAdPicture == null) {
-            DaoFactory.getAdsDao().deleteAd(adIdLong);
-            response.sendRedirect("/ads");
-            return;
-        }
-
-        DaoFactory.getGetAdsPicDao().deleteAdPicture(currentAdPicture.getAdID());
-        DaoFactory.getAdsDao().deleteAd(adIdLong);
-
-        response.sendRedirect("/ads");
+        DaoFactory.getAdsDao().updateAd(adIdLong, adTitle, adDescription);
+        response.sendRedirect("/ads/adsDetail");
 
     }
+
 }

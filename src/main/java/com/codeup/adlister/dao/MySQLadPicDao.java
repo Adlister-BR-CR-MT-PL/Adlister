@@ -104,4 +104,16 @@ public class MySQLadPicDao implements AdPictures{
         );
     }
 
+    @Override
+    public void deleteAdPicture(long adId){
+        String query = "DELETE FROM ad_pictures WHERE ad_id = ? LIMIT 1";
+        try{
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, adId);
+            stmt.executeUpdate();
+        } catch(SQLException e) {
+            throw new RuntimeException("Error deleting this ad picture.", e);
+        }
+    }
+
 }

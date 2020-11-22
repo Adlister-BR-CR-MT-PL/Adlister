@@ -8,5 +8,6 @@ public interface AdPictures {
     AdPicture findByAdPicID(long adID);
     Long insertPic(AdPicture id);
     void updatePicURL(String newPicURL, long userID);
+    void deleteAdPicture(long adId);
 
 }

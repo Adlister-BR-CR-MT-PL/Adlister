@@ -28,7 +28,7 @@
         <form action="/ads/detail" method="post">
             <div class="form-group">
                 <input type="url" placeholder="img URL Here" name="adsPicture">
-                <input name="adID" id="adID" type="hidden" value="${sessionScope.ad.id}">
+                <input name="adId" id="adId" type="hidden" value="${sessionScope.ad.id}">
                 <input type="submit" class="btn" value="Update Ad Picture">
             </div>
         </form>

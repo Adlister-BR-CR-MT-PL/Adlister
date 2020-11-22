@@ -33,7 +33,7 @@
             </div>
         </form>
 <%-- Updating an Ad--%>
-        <form action="../ads/editAd" method="POST">
+        <form action="../update-ad" method="GET">
             <input name="update-AdID" id="updateAdID" type="hidden" value="${ad.id}">
             <input name="update-UserID" id="update-UserID" type="hidden" value="${ad.userId}">
             <input type="submit" id="update-AD" class="btn btn-warning" value="Update">

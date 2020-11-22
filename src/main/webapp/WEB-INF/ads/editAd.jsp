@@ -18,7 +18,7 @@
 <div class="container">
     <h1>Edit Ad Information</h1>
     <c:if test="${sessionScope.user.id == sessionScope.ad.userId}">
-        <form action="../update-ad" method="POST">
+        <form action="../update-ad" method="post">
             <div class="form-group">
                 <label for="title">Title</label>
                 <input type="text" id="title" name="title" class="form-control" value="${sessionScope.ad.title}">

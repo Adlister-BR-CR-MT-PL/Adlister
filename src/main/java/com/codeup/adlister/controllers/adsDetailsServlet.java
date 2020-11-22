@@ -62,6 +62,7 @@ public class adsDetailsServlet extends HttpServlet {
                 }
 
 
+
             request.getSession().setAttribute("adPic", thisAdPic);
             request.getSession().setAttribute("PictureError", null);
             response.sendRedirect("/ads/detail");

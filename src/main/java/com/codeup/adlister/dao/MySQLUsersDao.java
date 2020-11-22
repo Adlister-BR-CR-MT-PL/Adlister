@@ -22,7 +22,6 @@ public class MySQLUsersDao implements Users {
         }
     }
 
-
     @Override
     public User findByUsername(String username) {
         String query = "SELECT * FROM users WHERE username = ? LIMIT 1";
@@ -92,5 +91,31 @@ public class MySQLUsersDao implements Users {
                 rs.getString("last_name")
         );
     }
+
+    public void deleteUser(User user){
+        String query = "DELETE FROM users WHERE id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, user.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error deleting User", e);
+        }
+    };
+    public void updateUser(User user){
+        String query = "UPDATE users SET username = ?, email = ?, password = ?, about_me = ?, phone_number = ? WHERE id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, user.getUsername());
+            stmt.setString(2, user.getEmail());
+            stmt.setString(3, user.getPassword());
+            stmt.setString(4, user.getAboutMe());
+            stmt.setString(5, user.getPhoneNumber());
+            stmt.setLong(6, user.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating User", e);
+        }
+    };
 
 }

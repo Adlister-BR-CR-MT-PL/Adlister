@@ -28,13 +28,12 @@
         <form action="/ads/detail" method="post">
             <div class="form-group">
                 <input type="url" placeholder="img URL Here" name="adsPicture">
-                <input name="userID" id="userID" type="hidden" value="${sessionScope.ad.id}">
+                <input name="adID" id="adID" type="hidden" value="${sessionScope.ad.id}">
                 <input type="submit" class="btn" value="Update Ad Picture">
             </div>
         </form>
 <%--        Deleting an Ad--%>
-        <button type="button" name="deleteAd" id="deleteAd" value="${sessionScope.ad.id}" class="btn btn-danger">DELETE</button>
-        <input type="submit" class="btn btn-danger" value="Delete Ad">
+        <button type="button" id="deletebtn" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
 
         <c:if test="${sessionScope.PictureError != error}">
             <div class="alert alert-warning" role="alert">

@@ -2,7 +2,7 @@ package com.codeup.adlister.models;
 
 public class Category {
     private long id;
-    private long adId;//Todo: ?
+    private long adId;
     private String name;
 
     public Category () {}
@@ -38,7 +38,6 @@ public class Category {
         this.name = name;
     }
 
-    /*Todo: Same here*/
     public long getAdId() {
         return adId;
     }
@@ -47,29 +46,6 @@ public class Category {
         this.adId = adId;
     }
 }
-
-//   Todo: Implement into?
-//    public String getCaplizedFirstLetterTitle() {
-//        String c = (title != null) ? title.trim() : "";
-//        String[] words = c.split(" ");
-//        StringBuilder result = new StringBuilder();
-//        for (String w : words) {
-//            result.append(w.length() > 1 ? w.substring(0, 1).toUpperCase() + w.substring(1).toLowerCase() : w.toUpperCase()).append(" ");
-//        }
-//        return result.toString().trim();
-//    }
-//  Todo: What is this?
-//    public String getPurifiedTitle() {
-//        String c = (title != null) ? title.trim() : "";
-//        String[] words = c.split(" ");
-//        StringBuilder result = new StringBuilder();
-//        for (String w : words) {
-//            if (!w.equals("&")) {
-//                result.append(w.length() > 1 ? w.substring(0, 1).toUpperCase() + w.substring(1).toLowerCase() : w.toUpperCase()).append(" ");
-//            }
-//        }
-//        return result.toString().trim();
-//    }
 
 
 

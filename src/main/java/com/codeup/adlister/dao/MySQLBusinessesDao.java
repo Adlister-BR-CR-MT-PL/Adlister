@@ -62,17 +62,6 @@ public class MySQLBusinessesDao implements Businesses {
         }
     }
 
-//    /*Todo:Alert!*/
-//    public Long recoverPw(Business business) {
-//            String query = "UPDATE businesses businesses(businessName, email, password) VALUES (?)";
-//            try {
-//                PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-//                stmt.setString(3, business.setPassword());
-//                stmt.executeUpdate();
-//            }
-//    }
-
-
     private Business extractBusiness(ResultSet rs) throws SQLException {
         if (! rs.next()) {
             return null;

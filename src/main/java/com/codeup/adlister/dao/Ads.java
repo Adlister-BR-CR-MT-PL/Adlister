@@ -13,7 +13,7 @@ public interface Ads {
 
     // Single variable search
     List<Ad> getAdsBySearchKeyword(String search);
-    List<Ad> getAdsBySearchCategory(Category category);
+    /*List<Ad> getAdsBySeasrchCategory(Category category);*/
     /*List<Ad> getAdsBySearchSort(String sort);*/
 
     //List<Ad> getAdsBySearchKeywordAndCategory(String search, Category category);

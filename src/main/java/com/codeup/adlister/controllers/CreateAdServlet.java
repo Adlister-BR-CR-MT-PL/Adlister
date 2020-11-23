@@ -20,7 +20,6 @@ public class CreateAdServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
-        /*Todo:AAAAAAAAAAAAAAAAAA*/
         request.setAttribute("categories", DaoFactory.getCategoriesDao().all());
         request.getRequestDispatcher("/WEB-INF/ads/create.jsp").forward(request, response);
     }

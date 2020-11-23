@@ -154,24 +154,21 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
-    @Override
-    public List<Ad> getAdsBySearchCategory(Category category) {
-        PreparedStatement stmt = null;
-        /*Todo: Figure out query*/
-        String query = "SELECT * FROM ads WHERE id IN (SELECT ad_id FROM adCategories WHERE category_id = " + category.getId() + ");";
-        try {
-            stmt = connection.prepareStatement(query);
-            ResultSet rs = stmt.executeQuery();
-            return createAdsFromResults(rs);
-        } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving all ads.", e);
-        }
-    }
-
+//    @Override
+//    public List<Ad> getAdsBySearchCategory(Category category) {
+//        PreparedStatement stmt = null;
+//        String query = "SELECT * FROM ads WHERE id IN (SELECT ad_id FROM adCategories WHERE category_id = " + category.getId() + ");";
+//        try {
+//            stmt = connection.prepareStatement(query);
+//            ResultSet rs = stmt.executeQuery();
+//            return createAdsFromResults(rs);
+//        } catch (SQLException e) {
+//            throw new RuntimeException("Error retrieving all ads.", e);
+//        }
+//    }
 
 //    @Override
 //    public List<Ad> getAdsBySort(int sort) {
-    //Todo:Error Scope
 //        String query = null;
 //        if (sort == 1) {
 //            String query = "SELECT * FROM ads_categories2 WHERE category_id LIKE '%" + sort + "%'";
@@ -184,35 +181,49 @@ public class MySQLAdsDao implements Ads {
 //        } else {
 //            System.out.println("\"error\" = " + "error");
 //        }
-/*        String query = "SELECT * FROM ads WHERE title LIKE '%a%'";
-        PreparedStatement stmt = null;
-        try {
-            stmt = connection.prepareStatement(query);
-            ResultSet rs = stmt.executeQuery();
-            return createAdsFromResults(rs);
-        } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving ads.", e);
-        }
-    }*/
-
-
-
-//    public List<Ad> getAdsBySearchAndCategory(String search, Category category) {
+//       String query = "SELECT * FROM ads WHERE title LIKE '%a%'";
 //        PreparedStatement stmt = null;
-//        String searchTermWithWildcards = "%" + search + "%";
-//        String query = "SELECT * FROM ads WHERE (title LIKE ? || description LIKE ?) AND id IN (SELECT ad_id FROM ad_categories WHERE category_id = " + category.getId() + ");";
 //        try {
 //            stmt = connection.prepareStatement(query);
-//            stmt.setString(1, searchTermWithWildcards);
-//            stmt.setString(2, searchTermWithWildcards);
 //            ResultSet rs = stmt.executeQuery();
 //            return createAdsFromResults(rs);
 //        } catch (SQLException e) {
 //            throw new RuntimeException("Error retrieving ads.", e);
 //        }
 //    }
-//
+
+
 //    public List<Ad> getAdsBySearchAndCategory(String search, Category category) {
+//        PreparedStatement stmt = null;
+//        String searchTerm = "%" + search + "%";
+//        String query = "SELECT * FROM ads WHERE (title LIKE ? || description LIKE ?) AND id IN (SELECT ad_id FROM ad_categories WHERE category_id = " + category.getId() + ");";
+//        try {
+//            stmt = connection.prepareStatement(query);
+//            stmt.setString(1, searchTerm);
+//            stmt.setString(2, searchTerm);
+//            ResultSet rs = stmt.executeQuery();
+//            return createAdsFromResults(rs);
+//        } catch (SQLException e) {
+//            throw new RuntimeException("Error retrieving ads.", e);
+//        }
+//    }
+
+//    public List<Ad> getAdsBySearchAndSort(String search, String sort) {
+//        PreparedStatement stmt = null;
+//        String searchTerm = "%" + search + "%";
+//        String query = "SELECT * FROM ads WHERE (title LIKE ? || description LIKE ?) /*Todo: finish query*/";
+//        try {
+//            stmt = connection.prepareStatement(query);
+//            stmt.setString(1, searchTerm);
+//            stmt.setString(2, searchTerm);
+//            ResultSet rs = stmt.executeQuery();
+//            return createAdsFromResults(rs);
+//        } catch (SQLException e) {
+//            throw new RuntimeException("Error retrieving ads.", e);
+//        }
+//    }
+
+//    public List<Ad> getAdsByCategoryAndSort(Category category, String sort) {
 //        PreparedStatement stmt = null;
 //        String searchTermWithWildcards = "%" + search + "%";
 //        String query = "SELECT * FROM ads WHERE (title LIKE ? || description LIKE ?) AND id IN (SELECT ad_id FROM ad_categories WHERE category_id = " + category.getId() + ");";

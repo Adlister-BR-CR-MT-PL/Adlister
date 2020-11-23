@@ -28,20 +28,15 @@
                                         <option value="14" name="14">Wanted</option>
                                     </select>
                                 </div>
-                                <div class="result-sorting col-4">
-                                    <select class="form-control border-0" id="sort" name="sort">
-                                        <option value="1" name="1">Sort By:</option>
-                                        <option value="1" name="1">Relevance</option>
-                                        <option value="2" name="2">Names (A-Z)</option>
-                                        <option value="2" name="2">Names (A-Z)</option>
-                                        <option value="3" name="3" disabled>Distance</option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-1 col-md-3 col-sm-12 p-0">
-                                    <button type="submit" class="btn btn-base">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </div>
+<%--                                <div class="result-sorting col-4">--%>
+<%--                                    <select class="form-control border-0" id="sort" name="sort">--%>
+<%--                                        <option value="1" name="1">Sort By:</option>--%>
+<%--                                        <option value="1" name="1">Relevance</option>--%>
+<%--                                        <option value="2" name="2">Names (A-Z)</option>--%>
+<%--                                        <option value="2" name="2">Names (A-Z)</option>--%>
+<%--                                        <option value="3" name="3" disabled>Distance</option>--%>
+<%--                                    </select>--%>
+<%--                                </div>--%>
                             </div>
                         </div>
                     </div>

@@ -63,12 +63,6 @@ public class UpdateInfoServlet extends HttpServlet {
 			request.getRequestDispatcher("/WEB-INF/user/profile.jsp").forward(request, response);
 			return;
 		}
-
 		response.sendRedirect("/logout");
-
 	}
-
-
-
-
 }

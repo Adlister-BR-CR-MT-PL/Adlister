@@ -55,7 +55,6 @@ public class AdsIndexServlet extends HttpServlet {
 //        }
 
 //        Two Variable Searches
-//        Todo: IMPORTANTE LOOK INTO DUMBO
 //        if(searchBySearchKeywords && searchByCategory) {
 //            Category category = DaoFactory.getCategoriesDao().getCategoryByTitle(cat);
 //            request.setAttribute("category", category);
@@ -77,8 +76,7 @@ public class AdsIndexServlet extends HttpServlet {
 //            request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
 //        }
 //
-//        Ads Index: All Ads
-//        TODO: IMPORTANTE FIGURE OUT X3
+//        Ads Index: All
 //        if(!searchBySearchKeywords && !searchByCategory && searchBySort) {
 //            Category category = DaoFactory.getCategoriesDao().getCategoryByTitle(cat);
 //            request.setAttribute("category", category);
@@ -87,7 +85,7 @@ public class AdsIndexServlet extends HttpServlet {
 //        }
     }
 
-    /*TODO: BROKEN BROKEN BROKEN*/
+    /*TODO: BROKEN*/
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String ad_ID = request.getParameter("ad-ID");
         Long adLong = Long.valueOf(ad_ID);

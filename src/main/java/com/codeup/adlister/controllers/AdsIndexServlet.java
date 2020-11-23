@@ -21,8 +21,9 @@ public class AdsIndexServlet extends HttpServlet {
         String sort = request.getParameter("sort");
 
         //Todo:Figure out
-        /*request.getSession().setAttribute("categoriesDao", DaoFactory.getCategoriesDao());*/
-        /*request.setAttribute("categoriesDao", DaoFactory.getCategoriesDao());*/
+        // Why two
+        request.getSession().setAttribute("categoriesDao", DaoFactory.getCategoriesDao());
+        request.setAttribute("categoriesDao", DaoFactory.getCategoriesDao());
 
         boolean searchBySearchKeywords = search != null && !search.equals("");
         boolean searchByCategory = category != null && !category.equals("");

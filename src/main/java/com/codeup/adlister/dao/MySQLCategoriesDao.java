@@ -50,16 +50,16 @@ public class MySQLCategoriesDao implements Categories {
     }
         /*TODO: ALERT ALERT ALERT*/
     @Override
-    public Category getCategoryByTitle(String category) {
+    public Category getCategoryByTitle(String cat) {
         PreparedStatement stmt = null;
         try {
-            stmt = connection.prepareStatement("SELECT * FROM categories WHERE name LIKE ? LIMIT 1;"); // Todo:possible bug here
-            stmt.setString(1, "%" + category +"%");
+            stmt = connection.prepareStatement("SELECT * FROM categories WHERE title LIKE ? LIMIT 1;"); // possible bug here
+            stmt.setString(1, "%" + cat +"%");
             ResultSet rs = stmt.executeQuery();
             Category category = new Category();
             while (rs.next()) {
                 category.setId(rs.getLong("id"));
-                category.setName(rs.getString("name"));
+                category.setTitle(rs.getString("title"));
             }
             return category;
         } catch (SQLException e) {
@@ -67,22 +67,38 @@ public class MySQLCategoriesDao implements Categories {
         }
     }
 
+//    public Category getCategoryByTitle(String cat) {
+//        PreparedStatement stmt = null;
+//        try {
+//            stmt = connection.prepareStatement("SELECT * FROM categories WHERE title LIKE ? LIMIT 1;"); // possible bug here
+//            stmt.setString(1, "%" + cat +"%");
+//            ResultSet rs = stmt.executeQuery();
+//            Category category = new Category();
+//            while (rs.next()) {
+//                category.setId(rs.getLong("id"));
+//                category.setTitle(rs.getString("title"));
+//            }
+//            return category;
+//        } catch (SQLException e) {
+//            throw new RuntimeException("Error retrieving all ads.", e);
+//        }
+//    }
 
-    @Override
-    public Long insert(Category category) {
-        String query = "INSERT INTO categories(ad_id, name) VALUES (?, ?)";
-        try {
-            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            stmt.setLong(1, category.getAdId());
-            stmt.setString(2, category.getName());
-            stmt.executeUpdate();
-            ResultSet rs = stmt.getGeneratedKeys();
-            rs.next();
-            return rs.getLong(1);
-        } catch (SQLException e) {
-            throw new RuntimeException("Error creating new category", e);
-        }
-    }
+//    @Override
+//    public Long insert(Ad ad) {
+//        String query = "INSERT INTO categories(ad_id, name) VALUES (?, ?)";
+//        try {
+//            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+//            stmt.setLong(1, category.getAdId());
+//            stmt.setString(2, category.getName());
+//            stmt.executeUpdate();
+//            ResultSet rs = stmt.getGeneratedKeys();
+//            rs.next();
+//            return rs.getLong(1);
+//        } catch (SQLException e) {
+//            throw new RuntimeException("Error creating new category", e);
+//        }
+//    }
 
     private Category extractCategories(ResultSet rs) throws SQLException {
         if (! rs.next()) {

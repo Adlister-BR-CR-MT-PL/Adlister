@@ -14,7 +14,7 @@ public interface Ads {
     List<Ad> getAdsBySearchKeyword(String search);
     /*Todo: Category object*/
     List<Ad> getAdsBySearchCategory(Category category);
-    List<Ad> getAdsBySearchSort(String sort);
+    /*List<Ad> getAdsBySearchSort(String sort);*/
 
     //List<Ad> getAdsBySearchKeywordAndCategory(String search, Category category);
     //List<Ad> getAdsBySearchKeywordAndSort(String search, Category category);

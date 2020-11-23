@@ -31,7 +31,7 @@ public class MySQLAdsDao implements Ads {
                 rs.getLong("id"),
                 rs.getLong("user_id"),
                 rs.getString("title"),
-                rs.getString("description"),
+                rs.getString("description")
                /*Todo: implement rs.getString("datetime")*/
         );
     }
@@ -90,8 +90,9 @@ public class MySQLAdsDao implements Ads {
     }
 
     @Override
-    public List<Ad> /*allAdsByCategory*/getAdsBySearchCategory(Category category) {
+    public List<Ad> getAdsBySearchCategory(Category category) {
         PreparedStatement stmt = null;
+        /*Todo: Figure out query*/
         String query = "SELECT * FROM ads WHERE id IN (SELECT ad_id FROM ad_categories WHERE category_id = " + category.getId() + ");";
         try {
             stmt = connection.prepareStatement(query);

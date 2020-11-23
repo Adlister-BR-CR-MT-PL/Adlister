@@ -16,9 +16,10 @@ public class User {
     private boolean isAdmin;
     private String createTime;
 
-    public User() {}
+    public User() {
+    }
 
-    public User(String username, String email, String password,String first_name,String last_name) {
+    public User(String username, String email, String password, String first_name, String last_name) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -32,7 +33,7 @@ public class User {
         this.listerType = listerType;
         this.username = username;
         this.email = email;
-        setPassword(password);
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -42,7 +43,7 @@ public class User {
         this.listerType = listerType;
         this.username = username;
         this.email = email;
-        setPassword(password);
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.aboutMe = aboutMe;

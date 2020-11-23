@@ -8,6 +8,7 @@ public class UserPicture {
     private String imgURL;
     private String altText;
     private long userID;
+    private String createTime;
 
     public UserPicture(){}
 
@@ -53,6 +54,9 @@ public class UserPicture {
         return createTime;
     }*/
 
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
 
 //    public void setCreateTime(String createTime) {
 //        this.createTime = createTime;

@@ -17,50 +17,49 @@ import java.io.IOException;
 @WebServlet(name = "adsDetailsServlet.java", urlPatterns = "/ads/detail")
 public class adsDetailsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        checks for logged in user
-        if (request.getSession().getAttribute("user") == null) {
-            response.sendRedirect("/login");
-            return;
-        }
+        request.getSession().getAttribute("user");
+
         User currentUser = (User) request.getSession().getAttribute("user");
         Ad currentAd = (Ad) request.getSession().getAttribute("ad");
         request.setAttribute("user", currentUser.getUsername());
         request.setAttribute("ad", currentAd);
-//        request.setAttribute("adPic", DaoFactory.getGetAdsPicDao().findByadIDAds(currentAd.getId()).getUrl());
 
-        request.getRequestDispatcher("/WEB-INF/ads/adsDetail.jsp").forward(request, response);
+//        request.setAttribute("adPic", DaoFactory.getGetAdsPicDao().findByAdIDinAds(currentAd.getId()).getAdImgUrl());
+        if ((DaoFactory.getGetAdsPicDao().findAdPicByAdIDInAds(currentAd.getAdID())) != null) {
+            request.setAttribute("adPic", DaoFactory.getGetAdsPicDao().findAdPicByAdIDInAds(currentAd.getAdID()).getUrl());
+        }
+
+        request.getRequestDispatcher("/WEB-INF/ads/adsDetail.jsp")
+                .forward(request, response);
     }
 
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        User currentUser = (User) request.getSession().getAttribute("user");
-//        Ad currentAd = (Ad) request.getSession().getAttribute("ad");
-//
-//        String imgURL = request.getParameter("adsPicture");
-//
-//        long url;
-//        AdPicture thisAdPic = new AdPicture(String url, long adID);
-//        AdPicture adPicDao = DaoFactory.getGetAdsPicDao().findByAdPicID(currentAd.getId());
-//
-//        System.out.println("currentAd.getUserId() = " + currentAd.getUserId());
-//        System.out.println("current user id " + currentUser.getId());
-//        if (currentUser.getId() == currentAd.getUserId()) {
-//            if (imgURL.isEmpty()) {
-////                // makes sure AdPic doesn't change, and gives an error
-//                request.getSession().setAttribute("PictureError", "error");
-//                request.getSession().setAttribute("adPic", thisAdPic);
-//                response.sendRedirect("/ads/detail");
-//            }
-//                if (adPicDao.getUrl() == null) {
-//                    // if there is no ad pic for this ad, insert one into the database
-//                    DaoFactory.getGetAdsPicDao().insert(thisAdPic);
-//                } else {
-//                    //if there is a picture, update and replace current picture
-//                    DaoFactory.getGetAdsPicDao().updatePicURL(imgURL, currentAd.getId());
-//                }
-//            request.getSession().setAttribute("adPic", thisAdPic);
-//            request.getSession().setAttribute("PictureError", null);
-//            response.sendRedirect("/ads/detail");
-//        }
-//        }
-//    }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        User currentUser = (User) request.getSession().getAttribute("user");
+        Ad currentAd = (Ad) request.getSession().getAttribute("ad");
+
+        String imgURL = request.getParameter("adsPicture");
+
+        AdPicture thisAdPic = new AdPicture(imgURL, currentAd.getAdID());
+        AdPicture adPicDao = DaoFactory.getGetAdsPicDao().findAdPicByAdIDInAds(currentAd.getAdID());
+
+
+        if (currentUser.getId() == currentAd.getUserId()) {
+            if (imgURL.isEmpty()) {
+//                // makes sure AdPic doesn't change, and gives an error
+                request.getSession().setAttribute("PictureError", "error");
+                request.getSession().setAttribute("adPic", thisAdPic);
+                response.sendRedirect("/ads/detail");
+            }
+            if (adPicDao == null) {
+                // if there is no ad pic for this ad, insert one into the database
+                DaoFactory.getGetAdsPicDao().insertPic(thisAdPic);
+            } else {
+                //if there is a picture, update and replace current picture
+                DaoFactory.getGetAdsPicDao().updatePicURL(imgURL, currentAd.getAdID());
+            }
+            request.getSession().setAttribute("adPic", thisAdPic);
+            request.getSession().setAttribute("PictureError", null);
+            response.sendRedirect("/ads/detail");
+        }
+    }
 }

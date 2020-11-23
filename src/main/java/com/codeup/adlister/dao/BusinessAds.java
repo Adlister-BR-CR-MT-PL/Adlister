@@ -8,4 +8,5 @@ public interface BusinessAds {
     List<BusinessAd> all();
     Long insert(BusinessAd businessAd);
     BusinessAd findByBusinessAdID(Long businessId);
+    List<BusinessAd> allBizAdsByBizId(long businessId);
 }

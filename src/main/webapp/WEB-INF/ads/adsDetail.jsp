@@ -19,8 +19,8 @@
 <div class="container">
     <h1>Ad Overview</h1>
     <img height="150px" src="${adPic}" alt="advertising picture">
-    <h1><c:out value="${ad.title}"/></h1>
-    <h2><c:out value="${ad.description}"/></h2>
+    <h1>TITLE: <c:out value="${ad.title}"/></h1>
+    <h2>DESCRIPTION: <c:out value="${ad.description}"/></h2>
     <h3>Ad ID: <c:out value="${ad.id}"/></h3>
     <h4> Created By: <c:out value="${user}"/></h4>
 
@@ -28,10 +28,24 @@
         <form action="/ads/detail" method="post">
             <div class="form-group">
                 <input type="url" placeholder="img URL Here" name="adsPicture">
-                <input name="userID" id="userID" type="hidden" value="${sessionScope.ad.id}">
-                <input type="submit" class="btn" value="Update Ad Picture">
+                <input name="adId" id="adId" type="hidden" value="${sessionScope.ad.id}">
+                <input type="submit" class="btn btn-primary" value="Update Ad Picture">
             </div>
         </form>
+
+        <%-- Updating an Ad--%>
+        <form action="../update-ad" method="GET">
+            <input name="update-AdID" id="updateAdID" type="hidden" value="${ad.id}">
+            <input name="update-UserID" id="update-UserID" type="hidden" value="${ad.userId}">
+            <input type="submit" id="update-AD" class="btn btn-warning" value="Update">
+        </form>
+        <%--        Delete Ad WORKS--%>
+        <form action="../delete-ad" method="POST">
+            <input name="delete-AdID" id="delete-AdID" type="hidden" value="${sessionScope.ad.id}">
+            <input name="delete-UserID" id="delete-UserID" type="hidden" value="${sessionScope.ad.userId}">
+            <input type="submit" id="delete-AD" class="btn btn-danger" value="Delete">
+        </form>
+
         <c:if test="${sessionScope.PictureError != error}">
             <div class="alert alert-warning" role="alert">
                 Couldn't upload file, try again.
@@ -39,6 +53,7 @@
         </c:if>
     </c:if>
 </div>
+<hr>
 <jsp:include page="../partials/footer.jsp" />
 </body>
 </html>

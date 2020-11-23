@@ -1,6 +1,7 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.BusinessAd;
 import com.codeup.adlister.models.Category;
 
 import java.util.List;
@@ -20,9 +21,12 @@ public interface Ads {
     //List<Ad> getAdsBySearchKeywordAndSort(String search, Category category);
     //List<Ad> getAdsBySearchCategoryAndSort(String search, Category category);
 
+    List<Ad> allAdsByUserId(long userId);
     //findAd by ad ID
     Ad findByAdID(Long adID);
 
     /*=========================Create Ads===============================*/
     Long insert(Ad ad);
+    void deleteAd(long adId);
+    void updateAd(long adId, String title, String description);
 }

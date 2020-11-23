@@ -5,9 +5,9 @@ import com.codeup.adlister.models.AdPicture;
 public interface AdPictures {
 
     AdPicture findByURL(String URL);
-    AdPicture findByAdIDinAds(long adID);
+    AdPicture findAdPicByAdIDInAds(long adID);
     AdPicture findByAdPicID(long adID);
-    Long insert(AdPicture id);
+    Long insertPic(AdPicture id);
     void updatePicURL(String newPicURL, long userID);
-
+    void deleteAdPicture(long adId);
 }

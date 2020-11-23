@@ -10,42 +10,53 @@ public class AdPicture {
 
     public AdPicture(){}
 
-    public AdPicture( String url, String alt_text, long adID) {
+    public AdPicture(String url, long adID) {
         this.url = url;
-        this.alt_text = alt_text;
         this.adID = adID;
     }
 
-    public AdPicture(long id, String url, String alt_text, long adID) {
-        this.id = id;
+    public AdPicture(long id, String url) {
+        this.adID = id;
+        this.url = url;
+    }
+
+    public AdPicture(String url, String alt_text, long adID) {
+        this.adID = adID;
         this.url = url;
         this.alt_text = alt_text;
         this.adID = adID;
 
     }
 
-
-    public long getId() {
-        return id;
+    public AdPicture(long id, String ad_img_url, String alt_text, long ad_id) {
+        this.adID = id;
+        this.url = ad_img_url;
+        this.alt_text = alt_text;
+        this.adID = ad_id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+
+    public long getAdID() {
+        return adID;
     }
 
-    public String getAdImgUrl() {
+    public void setAdID(long id) {
+        this.adID = id;
+    }
+
+    public String getUrl() {
         return url;
     }
 
-    public void setAdImgUrl(String adImgUrl) {
+    public void setUrl(String adImgUrl) {
         this.url = adImgUrl;
     }
 
-    public String getAltText() {
+    public String getAlt_Text() {
         return alt_text;
     }
 
-    public void setAltText(String altText) {
+    public void setAlt_Text(String altText) {
         this.alt_text = altText;
     }
 

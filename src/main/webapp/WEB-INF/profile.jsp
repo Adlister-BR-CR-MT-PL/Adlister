@@ -56,7 +56,7 @@
     <div class="card">
         <div class="card-body">
             <div class="card-title">
-                <h2><c:out value="${ad.title}" /></h2>
+                <h3><c:out value="${ad.title}" /></h3>
             </div>
             <div class="card-text">
                 <p><c:out value="${ad.description}"/></p>
@@ -71,5 +71,6 @@
     </c:forEach>
     </p>
     <jsp:include page="partials/footer.jsp" />
+</div>
 </body>
 </html>

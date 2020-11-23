@@ -8,7 +8,6 @@ public class UserPicture {
     private String imgURL;
     private String altText;
     private long userID;
-    private String alt_text;
     private String createTime;
 
     public UserPicture(){}

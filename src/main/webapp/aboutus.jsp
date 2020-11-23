@@ -16,12 +16,9 @@
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 <div class="container">
-
     <img src="https://dotunroy.files.wordpress.com/2015/05/happy-people.jpg" width="90%" class="img-fluid"
          alt="Responsive image">
     <h1>About Adlister</h1>
-
-
     <div class="row">
         <div class="col-4"> The Adlister is a classified advertisements website with sections devoted to jobs, for sale,
             items wanted, services, community service and gigs. Bianca Reusch, Chelsea Rolland, Michael Troia and Patrick Larkin began the
@@ -29,6 +26,7 @@
         </div>
     </div>
 </div>
+<hr>
 <jsp:include page="WEB-INF/partials/footer.jsp"/>
 </body>
 </html>

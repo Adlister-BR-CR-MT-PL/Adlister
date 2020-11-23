@@ -61,8 +61,9 @@ public class MySQLusrPicDao implements UserPictures {
                 rs.getLong("id"),
                 rs.getString("user_img_url"),
                 rs.getString("alt_text"),
-                rs.getLong("user_id")
-        );
+                rs.getLong("user_id"),
+                rs.getString("create_time"));
+
     }
 
     @Override

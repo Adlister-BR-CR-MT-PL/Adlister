@@ -11,10 +11,10 @@ import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
 
-public class MySQLAdPicturesDao implements AdPictures{
+public class MySQLAdPicDao implements AdPictures{
     private Connection connection;
 
-    public MySQLAdPicturesDao(Config config) {
+    public MySQLAdPicDao(Config config) {
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
@@ -40,7 +40,7 @@ public class MySQLAdPicturesDao implements AdPictures{
     }
 
     @Override
-    public AdPicture findByAdIDinAds(long UserID) {
+    public AdPicture findAdPicByAdIDInAds(long UserID) {
         String query = "SELECT * FROM ad_pictures WHERE ad_id = ?";
         try{
             PreparedStatement stmt = connection.prepareStatement(query);
@@ -67,12 +67,12 @@ public class MySQLAdPicturesDao implements AdPictures{
 
     @Override
 
-    public Long insert(AdPicture adPic) {
+    public Long insertPic(AdPicture adPic) {
         String query = "INSERT INTO ad_pictures(ad_img_url, alt_text,ad_id) VALUES (?,?,?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            stmt.setString(1, adPic.getAdImgUrl());
-            stmt.setString(2, adPic.getAltText());
+            stmt.setString(1, adPic.getUrl());
+            stmt.setString(2, "standard ad pic");
             stmt.setLong(3, adPic.getAdId());
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
@@ -97,7 +97,7 @@ public class MySQLAdPicturesDao implements AdPictures{
     }
 
     private AdPicture extractPic(ResultSet rs) throws SQLException {
-if(!rs.next()){
+        if (!rs.next()) {
             return null;
         }
         return new AdPicture(
@@ -107,5 +107,15 @@ if(!rs.next()){
                 rs.getLong("ad_id")
         );
     }
-
+        @Override
+        public void deleteAdPicture ( long adId){
+            String query = "DELETE FROM ad_pictures WHERE ad_id = ? LIMIT 1";
+            try {
+                PreparedStatement stmt = connection.prepareStatement(query);
+                stmt.setLong(1, adId);
+                stmt.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException("Error deleting this ad picture.", e);
+            }
+        }
 }

@@ -28,7 +28,28 @@ public class CreateAdServlet extends HttpServlet {
             user.getId(),
             request.getParameter("title"),
             request.getParameter("description")
+            //Todo: category in here???
         );
+
+        //Todo: Refactor
+        String[] category = request.getParameterValues("category");
+
+        boolean CreateAdError = request.getParameter("title").isEmpty()
+                || (request.getParameter("title") == null)
+                || (category  == null);
+
+        if(CreateAdError){
+            response.sendRedirect("/ads/create");
+            return;
+        }
+
+
+        //Todo : Fuck im gonna have to pasta this
+        //for (String cat:cats) {
+        //    Category category = DaoFactory.getCategoriesDao().getCategoryByTitle(cat);
+        //    DaoFactory.getCategoriesDao().insertToAdCategoryJoinTable(adId,category.getId());
+        //}
+
         DaoFactory.getAdsDao().insert(ad);
         response.sendRedirect("/ads");
     }

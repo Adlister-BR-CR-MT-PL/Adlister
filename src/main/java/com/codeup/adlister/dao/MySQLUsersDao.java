@@ -66,17 +66,18 @@ public class MySQLUsersDao implements Users {
         }
     }
 
-//    /*Todo:Alert!*/
-//    public Long recoverPw(User user) {
-//            String query = "UPDATE users users(username, email, password) VALUES (?)";
-//            try {
-//                PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-//                stmt.setString(3, user.setPassword());
-//                stmt.executeUpdate();
-//            }
+//    @Override
+//    public void recoverPW(String){
+//        String query = "UPDATE users SET password = (?) WHERE id =;";
+//        try {
+//            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+//            stmt.setString(3, user.getPassword());
+//            return extractUser(stmt.executeQuery());
+//        } catch (SQLException e) {
+//            throw new RuntimeException("Error finding a user by username", e);
+//        }
 //    }
-//TODO
-    //add method to add about_me section and/ lister_type
+
 
     private User extractUser(ResultSet rs) throws SQLException {
         if (! rs.next()) {
@@ -92,5 +93,4 @@ public class MySQLUsersDao implements Users {
                 rs.getString("last_name")
         );
     }
-
 }

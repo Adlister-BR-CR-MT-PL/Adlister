@@ -28,18 +28,18 @@ public class adsDetailsServlet extends HttpServlet {
         request.setAttribute("ad", currentAd);
 //        request.setAttribute("adPic", DaoFactory.getGetAdsPicDao().findByadIDAds(currentAd.getId()).getUrl());
 
-        request.getRequestDispatcher("/WEB-INF/ads/adsDetail.jsp")
-                .forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/ads/adsDetail.jsp").forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        User currentUser = (User) request.getSession().getAttribute("user");
 //        Ad currentAd = (Ad) request.getSession().getAttribute("ad");
 //
 //        String imgURL = request.getParameter("adsPicture");
-
-//        AdPicture thisAdPic = new AdPicture(currentAd.getId(), imgURL);
-//        AdPicture adPicDao = DaoFactory.getGetAdsPicDao().findByadIDAds(currentAd.getId());
+//
+//        long url;
+//        AdPicture thisAdPic = new AdPicture(String url, long adID);
+//        AdPicture adPicDao = DaoFactory.getGetAdsPicDao().findByAdPicID(currentAd.getId());
 //
 //        System.out.println("currentAd.getUserId() = " + currentAd.getUserId());
 //        System.out.println("current user id " + currentUser.getId());
@@ -61,6 +61,6 @@ public class adsDetailsServlet extends HttpServlet {
 //            request.getSession().setAttribute("PictureError", null);
 //            response.sendRedirect("/ads/detail");
 //        }
-        }
-    }
-
+//        }
+//    }
+}

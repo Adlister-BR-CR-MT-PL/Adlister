@@ -8,7 +8,6 @@ public class UserPicture {
     private String imgURL;
     private String altText;
     private long userID;
-    private String alt_text;
 
     public UserPicture(){}
 
@@ -29,13 +28,6 @@ public class UserPicture {
         this.userID = userID;
     }
 
-    public UserPicture(long id, String imgURL, String altText, long userID, String createTime) {
-        this.id = id;
-        this.imgURL = imgURL;
-        this.altText = altText;
-        this.userID = userID;
-        this.createTime = createTime;
-    }
 
     public long getId() {
         return id;
@@ -57,12 +49,14 @@ public class UserPicture {
         this.userID = userID;
     }
 
-    public String getCreateTime() {
+/*    public String getCreateTime() {
         return createTime;
-    }
+    }*/
 
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
+
+//    public void setCreateTime(String createTime) {
+//        this.createTime = createTime;
+//    }
 
     public long getImgID(){
         return this.id;

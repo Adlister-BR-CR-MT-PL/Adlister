@@ -21,7 +21,7 @@ public class User {
     public User(String username, String email, String password,String first_name,String last_name) {
         this.username = username;
         this.email = email;
-        setPassword(password);
+        this.password = password;
         this.firstName = first_name;
         this.lastName = last_name;
         this.isAdmin = false;
@@ -147,4 +147,5 @@ public class User {
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
+
 }

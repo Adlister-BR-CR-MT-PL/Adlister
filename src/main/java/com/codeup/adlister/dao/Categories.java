@@ -4,7 +4,24 @@ import com.codeup.adlister.models.Category;
 import java.util.List;
 
 public interface Categories {
+    // get a list of all the categories
     List<Category> all();
-    Category findByCategoryId(Long categoryId);
-    Long insert(Category category);
+
+    // get a Category object by the title
+    Category getCategoryByTitle(String category);
+    /*Todo:ALERT ALERT ALERT*/
+    // insert data to ad_categories table
+//    void insertToAdCategoryJoinTable(Long adId, Long categoryId);
+
+    // get categories of a particular ad
+    /*List<Category> getCategoriesOfAd(Ad ad);*/
+
+    // insert a new category and return the new category's id
+//    long insertIntoCategories(String title);
+
+    // seed categories
+    /*void seedCategoriesDb();*/
+
+    // Create new Category
+    long createCategory(String name);
 }

@@ -5,11 +5,12 @@ public class AdPicture {
     private String url;
     private String alt_text;
     private long adID;
+    private String createTime;
 
+    public AdPicture() {
+    }
 
-    public AdPicture(){}
-
-    public AdPicture( String url, String alt_text, long adID) {
+    public AdPicture(String url, String alt_text, long adID) {
         this.url = url;
         this.alt_text = alt_text;
         this.adID = adID;
@@ -20,51 +21,44 @@ public class AdPicture {
         this.url = url;
         this.alt_text = alt_text;
         this.adID = adID;
-
     }
-
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getAdImgUrl() {
-        return adImgUrl;
-    }
-
-    public void setAdImgUrl(String adImgUrl) {
-        this.adImgUrl = adImgUrl;
+    public String getUrl() {
+        return url;
     }
 
     public String getAltText() {
-        return altText;
+        return alt_text;
     }
 
-    public void setAltText(String altText) {
-        this.altText = altText;
-    }
-
-    public long getAdId() {
+    public long getAdID() {
         return adID;
-    }
-
-    public void setAdId(long adId) {
-        this.adID = adId;
     }
 
     public String getCreateTime() {
         return createTime;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public void setAlt_text(String alt_text) {
+        this.alt_text = alt_text;
+    }
+
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
-
-    public String getAltText(){
-        return this.alt_text;
-    }
 }
+
+
+

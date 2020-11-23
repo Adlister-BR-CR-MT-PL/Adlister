@@ -10,8 +10,8 @@
                                     <input type="text" placeholder="Search..." class="form-control" id="ad-search" name="search">
                                 </div>
                                 <div class="result-sorting col-4">
-                                    <span>Sort By:</span>
                                     <select class="form-control border-0" id="category" name="category">
+                                        <option value="1" name="1">Sort By:</option>
                                         <option value="1" name="1">Antiques</option>
                                         <option value="2" name="2">Appliances</option>
                                         <option value="3" name="3">Arts+crafts</option>
@@ -29,8 +29,8 @@
                                     </select>
                                 </div>
                                 <div class="result-sorting col-4">
-                                    <span>Sort By:</span>
                                     <select class="form-control border-0" id="sort" name="sort">
+                                        <option value="1" name="1">Sort By:</option>
                                         <option value="1" name="1">Relevance</option>
                                         <option value="2" name="2">Names (A-Z)</option>
                                         <option value="2" name="2">Names (A-Z)</option>

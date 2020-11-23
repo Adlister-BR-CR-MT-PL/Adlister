@@ -61,13 +61,5 @@ public class ViewProfileServlet extends HttpServlet {
         request.getSession().setAttribute("userPic", userPic);
         request.getSession().setAttribute("PictureError", null);
         response.sendRedirect("/profile");
-
-//        request.getSession().setAttribute("ad", );
-        //UPDATE PROFILE INFORMATION
-//        //Michael made the update jsp and functionality, so this is not needed
-//        if(request.getParameter("pageName").equals("editProfile")){
-//            response.sendRedirect("/editProfile");
-//        }
-
     }
 }

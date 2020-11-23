@@ -37,21 +37,6 @@
                                     <input type="text" class="form-control" id="email">
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-3">
-                                    <select class="form-control" id="securityQuestionQ">
-                                        <option selected="true" disabled="disabled">Please Select Security Question</option>
-                                        <option>What is your your favorite color?</option>
-                                        <option>What street did you grow up on?</option>
-                                        <option>Who was your 5th grade teacher?</option>
-                                        <option>What was your first car?</option>
-                                        <option>What is your dream job?</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-9">
-                                    <input id="securityQuestionA" name="securityQuestionA" class="form-control" type="text" placeholder="Security Question Answer">
-                                </div>
-                            </div>
                             <div class="form-group col-md-6">
                                 <label for="new_password" class="col-sm-2 col-form-label">New Password</label>
                                 <div class="col-sm-10">

@@ -62,7 +62,5 @@ public class UpdateAdServlet extends HttpServlet {
         response.sendRedirect("/ads");
         //Below does not work since its ad information is already set so it will need a refresh of some sort to work, currently not sure how to fix this
         //response.sendRedirect("/ads/detail");
-
     }
-
 }

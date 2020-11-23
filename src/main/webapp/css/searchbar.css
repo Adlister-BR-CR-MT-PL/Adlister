@@ -1,0 +1,32 @@
+body {
+    min-height: 100vh;
+    display: grid;
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: #2D7DD2;
+}
+
+form {
+    display: -webkit-box;
+    display: flex;
+    flex-wrap: wrap
+}
+
+form > input {
+    -webkit-box-flex: 1;
+    flex: 1 1 10ch;
+    margin: .5rem
+}
+
+input {
+    border: none;
+    background: hsl(0, 0%, 93%);
+    border-radius: .25rem;
+    padding: .75rem 1rem
+}
+
+input[type="submit"] {
+    background: hotpink;
+    color: white;
+    box-shadow: 0 .75rem .5rem -.5rem hsl(0, 50%, 80%);
+}

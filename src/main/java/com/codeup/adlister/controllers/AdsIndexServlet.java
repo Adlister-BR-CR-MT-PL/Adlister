@@ -21,10 +21,6 @@ public class AdsIndexServlet extends HttpServlet {
         String category = request.getParameter("category");
         String sort = request.getParameter("sort");
 
-        System.out.println("cat = " + category);
-
-        //Todo:Figure out
-        // Why two
         request.getSession().setAttribute("categoriesDao", DaoFactory.getCategoriesDao());
         request.setAttribute("categoriesDao", DaoFactory.getCategoriesDao());
 
@@ -90,7 +86,8 @@ public class AdsIndexServlet extends HttpServlet {
 //            request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
 //        }
     }
-    /*TODO: Figure out what she wants to do with do post*/
+
+    /*TODO: BROKEN BROKEN BROKEN*/
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String ad_ID = request.getParameter("ad-ID");
         Long adLong = Long.valueOf(ad_ID);

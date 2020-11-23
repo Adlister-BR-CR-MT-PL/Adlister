@@ -5,15 +5,14 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Viewing All The Ads"/>
     </jsp:include>
+    <link rel="stylesheet" type="text/css" href="/css/searchbar.css"/>
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 </form>
-    <jsp:include page="/WEB-INF/partials/Searchbar.jsp" />
-
+<jsp:include page="/WEB-INF/partials/Searchbar.jsp" />
 <div class="container">
     <h1>Here Are all the ads!</h1>
-
 
     <c:forEach var="ad" items="${ads}">
         <div class="card">

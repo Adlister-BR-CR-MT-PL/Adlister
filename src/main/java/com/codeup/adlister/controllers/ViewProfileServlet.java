@@ -30,8 +30,8 @@ public class ViewProfileServlet extends HttpServlet {
 
         request.setAttribute("ads", DaoFactory.getAdsDao().allAdsByUserId(currentUser.getId()));
         request.setAttribute("ads", DaoFactory.getAdsDao().all());
-        request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
-        request.getRequestDispatcher("/ads/detail.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/user/profile.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/ads/detail.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -71,4 +71,3 @@ public class ViewProfileServlet extends HttpServlet {
 
     }
 }
-

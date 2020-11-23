@@ -13,7 +13,6 @@ public interface Ads {
 
     // Single variable search
     List<Ad> getAdsBySearchKeyword(String search);
-    /*Todo: Category object*/
     List<Ad> getAdsBySearchCategory(Category category);
     /*List<Ad> getAdsBySearchSort(String sort);*/
 

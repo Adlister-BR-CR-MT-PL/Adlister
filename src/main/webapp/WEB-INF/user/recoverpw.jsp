@@ -14,14 +14,14 @@
     <link href="/css/recoverpw.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<jsp:include page="partials/navbar.jsp"/>
+<jsp:include page="../partials/navbar.jsp"/>
 <div class="container forget-password">
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="text-center">
-                        <img src="partials/forgot-pw.png" alt="locked" border="0">
+                        <img src="../partials/forgot-pw.png" alt="locked" border="0">
                         <h2 class="text-center">Forgot Password?</h2>
                         <p>You can reset your password here.</p>
                         <form action="/recoverpw" id="register-form" role="form" autocomplete="off" class="form" method="post">

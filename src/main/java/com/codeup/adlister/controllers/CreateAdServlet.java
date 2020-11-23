@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.Category;
 import com.codeup.adlister.models.User;
 
 import javax.servlet.ServletException;
@@ -18,39 +19,39 @@ public class CreateAdServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
-        request.getRequestDispatcher("/WEB-INF/ads/create.jsp")
-            .forward(request, response);
+        /*Todo:AAAAAAAAAAAAAAAAAA*/
+        request.setAttribute("categories", DaoFactory.getCategoriesDao().all());
+        request.getRequestDispatcher("/WEB-INF/ads/create.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User user = (User) request.getSession().getAttribute("user");
+        // Todo: need input validation and error messages with empty title here
         Ad ad = new Ad(
-            user.getId(),
-            request.getParameter("title"),
-            request.getParameter("description")
-            //Todo: category in here???
+                user.getId(),
+                request.getParameter("title"),
+                request.getParameter("description")
         );
 
-        //Todo: Refactor
-        String[] category = request.getParameterValues("category");
+        Long adId = DaoFactory.getAdsDao().insert(ad);
+
+        // get category array from checkbox result
+        String[] categories = request.getParameterValues("category");
 
         boolean CreateAdError = request.getParameter("title").isEmpty()
                 || (request.getParameter("title") == null)
-                || (category  == null);
+                || (categories == null);
 
         if(CreateAdError){
             response.sendRedirect("/ads/create");
             return;
         }
 
+        for (String cat : categories) {
+            Category category = DaoFactory.getCategoriesDao().getCategoryByName(cat);
+            DaoFactory.getCategoriesDao().insertToAdCategoryJoinTable(adId,category.getId());
+        }
 
-        //Todo : Fuck im gonna have to pasta this
-        //for (String cat:cats) {
-        //    Category category = DaoFactory.getCategoriesDao().getCategoryByTitle(cat);
-        //    DaoFactory.getCategoriesDao().insertToAdCategoryJoinTable(adId,category.getId());
-        //}
-
-        DaoFactory.getAdsDao().insert(ad);
         response.sendRedirect("/ads");
     }
 }

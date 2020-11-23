@@ -3,6 +3,7 @@ package com.codeup.adlister.controllers;
 import com.codeup.adlister.dao.Ads;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.Category;
 import com.codeup.adlister.models.User;
 
 import javax.servlet.ServletException;
@@ -19,6 +20,8 @@ public class AdsIndexServlet extends HttpServlet {
         String search = request.getParameter("search");
         String category = request.getParameter("category");
         String sort = request.getParameter("sort");
+
+        System.out.println("cat = " + category);
 
         //Todo:Figure out
         // Why two
@@ -44,7 +47,9 @@ public class AdsIndexServlet extends HttpServlet {
 
         /*Todo: Error Running*/
 /*        if(searchByCategory) {
-            request.setAttribute("ads", DaoFactory.getAdsDao().getAdsBySearchCategory(category));
+            Category category = DaoFactory.getCategoriesDao().getCategoryByTitle(cat);
+            request.setAttribute("category", category);
+            request.setAttribute("ads", DaoFactory.getAdsDao().allAdsByCategory(category));
             request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
         }*/
 

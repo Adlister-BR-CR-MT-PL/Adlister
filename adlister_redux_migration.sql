@@ -7,6 +7,7 @@ DROP SCHEMA IF EXISTS `adlister_db`;
 CREATE SCHEMA IF NOT EXISTS `adlister_db` DEFAULT CHARACTER SET utf8;
 USE `adlister_db`;
 
+SET FOREIGN_KEY_CHECKS=0;
 
 DROP TABLE IF EXISTS `adlister_db`.`users`;
 
@@ -66,7 +67,6 @@ DROP TABLE IF EXISTS `adlister_db`.`categories`;
 CREATE TABLE IF NOT EXISTS `adlister_db`.`categories`
 (
     `id`    INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    `ad_id` INT UNSIGNED NOT NULL,
     `name`  VARCHAR(255) NOT NULL,
     PRIMARY KEY (`id`)
 );
@@ -114,16 +114,15 @@ CREATE TABLE IF NOT EXISTS `adlister_db`.`ad_pictures`
 );
 
 
-DROP TABLE IF EXISTS `adlister_db`.`adCategories`;
+DROP TABLE IF EXISTS `adlister_db`.`ad_categories`;
 
-CREATE TABLE IF NOT EXISTS `adlister_db`.`adCategories`
+CREATE TABLE IF NOT EXISTS `adlister_db`.`ad_categories`
 (
-    `ad_id`       INT UNSIGNED NOT NULL,
-    `category_id` INT UNSIGNED NOT NULL,
-    FOREIGN KEY (`ad_id`) REFERENCES `adlister_db`.`ads` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-    FOREIGN KEY (`category_id`) REFERENCES `adlister_db`.`categories` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+    ad_id INT UNSIGNED NOT NULL,
+    category_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (category_id) REFERENCES categories(id),
+    FOREIGN KEY (ad_id) REFERENCES ads(id) ON DELETE CASCADE
 );
-
 
 DROP TABLE IF EXISTS `adlister_db`.`business_ads`;
 

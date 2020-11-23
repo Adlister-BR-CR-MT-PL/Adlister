@@ -20,7 +20,7 @@ CREATE TABLE categories (
     PRIMARY KEY (id)
 );
 
-INSERT INTO categories2(name) VALUES
+INSERT INTO categories(name) VALUES
     ('Antiques'),
     ('Appliances'),
     ('Arts+crafts'),

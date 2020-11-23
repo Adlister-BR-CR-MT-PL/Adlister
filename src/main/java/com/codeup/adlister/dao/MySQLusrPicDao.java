@@ -63,7 +63,6 @@ public class MySQLusrPicDao implements UserPictures {
                 rs.getString("alt_text"),
                 rs.getLong("user_id"),
                 rs.getString("create_time"));
-
     }
 
     @Override
